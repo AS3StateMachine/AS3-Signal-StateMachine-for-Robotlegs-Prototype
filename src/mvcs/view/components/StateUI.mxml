@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical">
+    <mx:CheckBox id="exitingGuard" label="cancel outgoing" selected="{data.exiting}"/>
+    <mx:CheckBox id="enteringGuard" label="cancel incoming" selected="{data.entering}"/>
+    <mx:ControlBar>
+        <mx:Button id="previous" label="&lt;&lt;"/>
+        <mx:Button id="next" label="&gt;&gt;"/>
+    </mx:ControlBar>
+    <mx:Binding source="exitingGuard.selected" destination="data.exiting"/>
+    <mx:Binding source="enteringGuard.selected" destination="data.entering"/>
+    <mx:Script><![CDATA[
+        public function set enableButtons ( value:Boolean ):void{
+	        next.enabled = value;
+		    previous.enabled = value;
+		    alpha = value ? 1 : 0.5;
+        }
+        ]]></mx:Script>
+</mx:Panel>

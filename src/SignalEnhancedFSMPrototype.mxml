@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application
+        xmlns:mx="http://www.adobe.com/2006/mxml"
+        xmlns:mvcs="mvcs.*"
+        layout="horizontal" xmlns:components="mvcs.view.components.*">
+    <mvcs:SignalEnhancedFSMContext contextView="{this}"/>
+    <components:FirstStateUI title="first" width="100%" height="100%"/>
+    <components:SecondStateUI title="second" width="100%" height="100%"/>
+    <components:ThirdStateUI title="third" width="100%" height="100%"/>
+    <components:OutputTextArea width="100%" height="100%"/>
+</mx:Application>
