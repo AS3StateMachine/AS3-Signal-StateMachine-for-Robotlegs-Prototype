@@ -1,10 +1,9 @@
 package mvcs.controller.cmds {
-import mvcs.view.events.WriteEvent;
+	import mvcs.view.events.WriteEvent;
 
-import org.osflash.signals.ISignal;
-import org.robotlegs.mvcs.SignalCommand;
+	import org.robotlegs.mvcs.SignalCommand;
 
-public class FirstStateEnteredCmd extends SignalCommand {
+	public class FirstStateEnteredCmd extends SignalCommand {
 
 	[Inject]
 	public var payload:Object;

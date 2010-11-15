@@ -1,11 +1,11 @@
 package mvcs.view.mediators {
-import mvcs.models.ThirdStateGuardModel;
-import mvcs.view.components.StateUI;
-import mvcs.view.components.ThirdStateUI;
+	import mvcs.models.ThirdStateGuardModel;
+	import mvcs.view.components.StateUI;
+	import mvcs.view.components.ThirdStateUI;
 
-import org.osflash.statemachine.core.ISignalState;
+	import org.osflash.statemachine.core.ISignalState;
 
-public class ThirdStateUIMediator extends StateUIMediator {
+	public class ThirdStateUIMediator extends StateUIMediator {
 	[Inject]
 	public var ui:ThirdStateUI;
 

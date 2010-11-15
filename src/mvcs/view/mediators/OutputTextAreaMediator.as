@@ -1,10 +1,10 @@
 package mvcs.view.mediators {
-import mvcs.view.components.OutputTextArea;
-import mvcs.view.events.WriteEvent;
+	import mvcs.view.components.OutputTextArea;
+	import mvcs.view.events.WriteEvent;
 
-import org.robotlegs.mvcs.Mediator;
+	import org.robotlegs.mvcs.Mediator;
 
-public class OutputTextAreaMediator extends Mediator {
+	public class OutputTextAreaMediator extends Mediator {
 	[Inject]
 	public var view:OutputTextArea;
 

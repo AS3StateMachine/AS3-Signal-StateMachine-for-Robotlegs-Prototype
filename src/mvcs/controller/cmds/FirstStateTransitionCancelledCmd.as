@@ -1,9 +1,9 @@
 package mvcs.controller.cmds {
-import mvcs.view.events.WriteEvent;
+	import mvcs.view.events.WriteEvent;
 
-import org.robotlegs.mvcs.SignalCommand;
+	import org.robotlegs.mvcs.SignalCommand;
 
-public class FirstStateTransitionCancelledCmd extends SignalCommand {
+	public class FirstStateTransitionCancelledCmd extends SignalCommand {
 
 	[Inject]
 	public var action:String;

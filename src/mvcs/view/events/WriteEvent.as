@@ -1,7 +1,7 @@
 package mvcs.view.events {
-import flash.events.Event;
+	import flash.events.Event;
 
-public class WriteEvent extends Event {
+	public class WriteEvent extends Event {
 	public static const WRITE:String = "write";
 	public var msg:String;
 
