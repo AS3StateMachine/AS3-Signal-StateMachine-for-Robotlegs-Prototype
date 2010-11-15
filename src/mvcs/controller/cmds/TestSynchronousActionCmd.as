@@ -1,15 +1,15 @@
 package mvcs.controller.cmds {
-import mvcs.controller.FSMConstants;
-import mvcs.view.events.WriteEvent;
+	import mvcs.controller.FSMConstants;
+	import mvcs.view.events.WriteEvent;
 
-import org.osflash.statemachine.core.ISignalFSMController;
-import org.osflash.statemachine.core.IState;
-import org.robotlegs.mvcs.Command;
+	import org.osflash.statemachine.core.IFSMController;
+	import org.osflash.statemachine.core.IState;
+	import org.robotlegs.mvcs.Command;
 
-public class TestSynchronousActionCmd extends Command {
+	public class TestSynchronousActionCmd extends Command {
 
 	[Inject]
-	public var fsmController:ISignalFSMController;
+	public var fsmController:IFSMController;
 
 	override public function execute():void{
 

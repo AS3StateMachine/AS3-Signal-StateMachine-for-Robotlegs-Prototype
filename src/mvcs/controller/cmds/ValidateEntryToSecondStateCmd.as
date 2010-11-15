@@ -1,16 +1,16 @@
 package mvcs.controller.cmds {
-import mvcs.models.SecondStateGuardModel;
-import mvcs.view.events.WriteEvent;
+	import mvcs.models.SecondStateGuardModel;
+	import mvcs.view.events.WriteEvent;
 
-import org.osflash.statemachine.core.ISignalFSMController;
-import org.robotlegs.mvcs.SignalCommand;
+	import org.osflash.statemachine.core.IFSMController;
+	import org.robotlegs.mvcs.SignalCommand;
 
-public class ValidateEntryToSecondStateCmd extends SignalCommand {
+	public class ValidateEntryToSecondStateCmd extends SignalCommand {
 	[Inject]
 	public var model:SecondStateGuardModel;
 
 	[Inject]
-	public var fsmController:ISignalFSMController;
+	public var fsmController:IFSMController;
 
 	override public function execute():void{
 		if( model.entering ){

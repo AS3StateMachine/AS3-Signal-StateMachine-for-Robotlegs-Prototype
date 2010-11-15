@@ -1,17 +1,17 @@
 package mvcs.view.mediators {
-import flash.events.MouseEvent;
+	import flash.events.MouseEvent;
 
-import mvcs.controller.FSMConstants;
-import mvcs.view.components.StateUI;
+	import mvcs.controller.FSMConstants;
+	import mvcs.view.components.StateUI;
 
-import org.osflash.statemachine.core.ISignalFSMController;
-import org.osflash.statemachine.core.ISignalState;
-import org.robotlegs.mvcs.Mediator;
+	import org.osflash.statemachine.core.IFSMController;
+	import org.osflash.statemachine.core.ISignalState;
+	import org.robotlegs.mvcs.Mediator;
 
-public class StateUIMediator extends Mediator {
+	public class StateUIMediator extends Mediator {
 
 	[Inject]
-	public var fsmController:ISignalFSMController;
+	public var fsmController:IFSMController;
 
 	//////////////////////////////////////////////////////////////////////////////
 	// overridden in subclasses to access injected properties
