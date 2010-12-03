@@ -7,7 +7,7 @@ package mvcs {
 	import mvcs.controller.cmds.TearDownFirstStateCmd;
 	import mvcs.controller.cmds.TearDownSecondStateCmd;
 	import mvcs.controller.cmds.TearDownThirdStateCmd;
-	import mvcs.controller.cmds.TestSynchronousActionCmd;
+	import mvcs.controller.cmds.TestFSMControllerActionLaterCmd;
 	import mvcs.controller.cmds.ThirdStateEnteredCmd;
 	import mvcs.controller.cmds.ThirdStateTransitionCancelledCmd;
 	import mvcs.controller.cmds.ValidateEntryToFirstStateCmd;
@@ -63,7 +63,7 @@ public class SignalEnhancedFSMContext extends SignalContext {
 		fsmInjector.initiate( FSMConstants.FSM );
 
 		// add the SignalCommands to the decoder before injection
-		fsmInjector.addCommandClass( TestSynchronousActionCmd );
+		fsmInjector.addCommandClass( TestFSMControllerActionLaterCmd );
 		fsmInjector.addCommandClass( ValidateEntryToFirstStateCmd );
 		fsmInjector.addCommandClass( ValidateExitFromFirstStateCmd );
 		fsmInjector.addCommandClass( FirstStateEnteredCmd );

@@ -29,7 +29,7 @@ public class FSMConstants {
 
 		<state
 		name={SYNCTEST}
-		entered="TestSynchronousActionCmd"
+		entered="TestFSMControllerActionLaterCmd"
 		>
 
 			<transition action={NEXT}
