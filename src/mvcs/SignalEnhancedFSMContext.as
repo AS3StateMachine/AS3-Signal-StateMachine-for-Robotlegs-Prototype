@@ -1,5 +1,7 @@
 package mvcs {
 	import mvcs.controller.FSMConstants;
+	import mvcs.controller.cmds.CancelledTestEnteredCmd;
+	import mvcs.controller.cmds.CancelledTestTransitionCancelledCmd;
 	import mvcs.controller.cmds.FirstStateEnteredCmd;
 	import mvcs.controller.cmds.FirstStateTransitionCancelledCmd;
 	import mvcs.controller.cmds.SecondStateEnteredCmd;
@@ -13,9 +15,11 @@ package mvcs {
 	import mvcs.controller.cmds.ValidateEntryToFirstStateCmd;
 	import mvcs.controller.cmds.ValidateEntryToSecondStateCmd;
 	import mvcs.controller.cmds.ValidateEntryToThirdStateCmd;
+	import mvcs.controller.cmds.ValidateExitFromCancelledTestStateCmd;
 	import mvcs.controller.cmds.ValidateExitFromFirstStateCmd;
 	import mvcs.controller.cmds.ValidateExitFromSecondStateCmd;
 	import mvcs.controller.cmds.ValidateExitFromThirdStateCmd;
+	import mvcs.models.CancelledTestModel;
 	import mvcs.models.FirstStateGuardModel;
 	import mvcs.models.SecondStateGuardModel;
 	import mvcs.models.ThirdStateGuardModel;
@@ -30,7 +34,10 @@ package mvcs {
 	import mvcs.view.mediators.ThirdStateUIMediator;
 
 	import org.osflash.statemachine.SignalFSMInjector;
-	import org.robotlegs.mvcs.SignalContext;
+import org.robotlegs.base.GuardedSignalCommandMap;
+import org.robotlegs.core.IGuardedSignalCommandMap;
+import org.robotlegs.core.ISignalCommandMap;
+import org.robotlegs.mvcs.SignalContext;
 
 	// NOTE: extends a SignalContext
 public class SignalEnhancedFSMContext extends SignalContext {
@@ -55,35 +62,46 @@ public class SignalEnhancedFSMContext extends SignalContext {
 		injector.mapSingleton( FirstStateGuardModel );
 		injector.mapSingleton( SecondStateGuardModel );
 		injector.mapSingleton( ThirdStateGuardModel );
+		injector.mapSingleton( CancelledTestModel );
+
 	}
 
 	private function mapController():void{
 
-		var fsmInjector:SignalFSMInjector = new SignalFSMInjector( injector, signalCommandMap );
+		var fsmInjector:SignalFSMInjector = new SignalFSMInjector( injector, IGuardedSignalCommandMap(signalCommandMap ) );
 		fsmInjector.initiate( FSMConstants.FSM );
 
 		// add the SignalCommands to the decoder before injection
-		fsmInjector.addCommandClass( TestFSMControllerActionLaterCmd );
-		fsmInjector.addCommandClass( ValidateEntryToFirstStateCmd );
-		fsmInjector.addCommandClass( ValidateExitFromFirstStateCmd );
-		fsmInjector.addCommandClass( FirstStateEnteredCmd );
-		fsmInjector.addCommandClass( TearDownFirstStateCmd );
-		fsmInjector.addCommandClass( FirstStateTransitionCancelledCmd );
-		fsmInjector.addCommandClass( ValidateEntryToSecondStateCmd );
-		fsmInjector.addCommandClass( ValidateExitFromSecondStateCmd );
-		fsmInjector.addCommandClass( SecondStateEnteredCmd );
-		fsmInjector.addCommandClass( TearDownSecondStateCmd );
-		fsmInjector.addCommandClass( SecondStateTransitionCancelledCmd );
-		fsmInjector.addCommandClass( ValidateEntryToThirdStateCmd );
-		fsmInjector.addCommandClass( ValidateExitFromThirdStateCmd );
-		fsmInjector.addCommandClass( ThirdStateEnteredCmd );
-		fsmInjector.addCommandClass( TearDownThirdStateCmd );
-		fsmInjector.addCommandClass( ThirdStateTransitionCancelledCmd );
+		fsmInjector.addClass( TestFSMControllerActionLaterCmd );
+		fsmInjector.addClass( ValidateEntryToFirstStateCmd );
+		fsmInjector.addClass( ValidateExitFromFirstStateCmd );
+		fsmInjector.addClass( FirstStateEnteredCmd );
+		fsmInjector.addClass( TearDownFirstStateCmd );
+		fsmInjector.addClass( FirstStateTransitionCancelledCmd );
+		fsmInjector.addClass( ValidateEntryToSecondStateCmd );
+		fsmInjector.addClass( ValidateExitFromSecondStateCmd );
+		fsmInjector.addClass( SecondStateEnteredCmd );
+		fsmInjector.addClass( TearDownSecondStateCmd );
+		fsmInjector.addClass( SecondStateTransitionCancelledCmd );
+		fsmInjector.addClass( ValidateEntryToThirdStateCmd );
+		fsmInjector.addClass( ValidateExitFromThirdStateCmd );
+		fsmInjector.addClass( ThirdStateEnteredCmd );
+		fsmInjector.addClass( TearDownThirdStateCmd );
+		fsmInjector.addClass( ThirdStateTransitionCancelledCmd );
+		fsmInjector.addClass( ValidateExitFromCancelledTestStateCmd );
+		fsmInjector.addClass( CancelledTestTransitionCancelledCmd );
+		fsmInjector.addClass( CancelledTestEnteredCmd );
+	
 
 		fsmInjector.inject();
 		fsmInjector.destroy();
 
 	}
+
+   override  public function get signalCommandMap():ISignalCommandMap
+        {
+            return _signalCommandMap || (_signalCommandMap = new GuardedSignalCommandMap(injector.createChild(injector.applicationDomain)));
+        }
 
 }
 }
